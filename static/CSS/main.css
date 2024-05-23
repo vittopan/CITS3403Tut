@@ -1,0 +1,102 @@
+body {
+
+    background-image: url('../Images/NSB.png'); /* Path to your background image */
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh; /* Ensure the background covers the entire viewport height */
+    margin: 0;
+    padding: 0;
+}
+.feedBox {
+    background: rgba(239, 238, 238, 0.5);
+    padding: 50px;
+    border-radius: 10px;
+    height: max-content;
+    margin: 20px;
+    border-color: #000000;
+    border-width: 10;
+    display: flexbox;
+    overflow-wrap: normal;
+    
+  }
+
+  .feedBoxSwell {
+    transition: margin 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+
+
+  .feedBoxSwell:hover {
+    margin: 10px;
+    opacity: 0.9;
+    transition: margin 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  .feedbox h1 {
+    padding-bottom: 2px;
+    padding-left: 20px;
+    margin-left: 10px;
+  }
+
+  .feedBox p {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 550;
+    padding-bottom: 2px;
+    padding-left: 20px;
+  }
+
+  button {
+    height: 60px;
+    width: 100px;
+    border-radius: 16px;
+    border: solid 3px white;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  
+    color: white;
+    font-size: 16px;
+    font-family: Bodoni MT, Bodoni 72, Didot, Didot LT STD, Hoefler Text, Garamond,
+      Times New Roman, serif;
+  }
+
+  button a{
+    text-decoration: none;
+    color: white;
+  }
+  
+  a:hover{
+    color: black
+
+  }
+
+  #expandableContent {
+    display: none; /* Hide the content by default */
+}
+
+button .btn{
+    height: 30px;
+    width: 30px;
+
+}
+.spark {
+    position: absolute;
+    width: 30px;
+    height: 8px;
+    border-radius: 3px;
+    background-color: white;
+    transform: none;
+    animation: sparkAnim 0.5s ease-out forwards;
+  }
+  
+  @keyframes sparkAnim {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5);
+    }
+  }

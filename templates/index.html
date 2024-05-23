@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <title>Agile Web Development</title>
+</head>
+<body style="height: 80vh">
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light font-weight-bold fixed-top">
+                <div class="container">
+                    <a class="navbar-brand navbar-light" href="{{url_for('home')}}"><img src="../static/Images/NSPLogo.png" alt="NSP Logo" style="height: 50px; width: 50px;"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></button>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <div class="container d-flex align-items-center justify-content-center">
+        {%block content%}
+        {%endblock content%}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Find the button and content elements
+        var button = document.getElementById('toggleButton');
+        var content = document.getElementById('expandableContent');
+
+        // Add click event listener to the button
+        button.addEventListener('click', function() {
+            // Toggle the visibility of the content
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        });
+        });
+</script>
+
+<script>
+    let styleSheet = null;
+
+    const SPARK_ELEMENT_WIDTH = 30;
+    const DISTANCE = 40;
+
+    const RANDOMNESS_ON = true;
+
+    /**
+     * A burst is a grouping of many sparks
+     * A spark is some individual dom element generally used with other sparks to create interesting UI effects.
+     **/
+
+    /**
+     * Util for creating sequences of css transform steps cleanly
+     */
+    function createTransformSteps() {
+    if (Array.from(arguments).length === 0) {
+        throw Exception("arguments to createTransformSteps should never be empty!");
+    }
+
+    const inputSteps = Array.from(arguments);
+    const outputSteps = [inputSteps.shift()];
+    inputSteps.forEach((step, i) => {
+        outputSteps.push(`${outputSteps[i]} ${step}`);
+    });
+
+    return outputSteps;
+    }
+
+    /**
+     * Creates a new keyframe rule available in css context with a specific spark rotation
+     */
+    const dynamicAnimation = (name, rotation) => {
+    if (!styleSheet) {
+        styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        document.head.appendChild(styleSheet);
+    }
+
+    /**
+     Explaining the transform rules
+    1. prepares spark
+    2. shoots the spark out
+    3. keeps the spark in place while scaling it down
+    */
+
+    const randomDist = RANDOMNESS_ON
+        ? Math.floor((Math.random() - 0.5) * DISTANCE * 0.7)
+        : 0;
+
+    const [s1, s2, s3] = createTransformSteps(
+        `translate(-50%, -50%) rotate(${rotation}deg) translate(10px, 0px)`,
+        `translate(${DISTANCE + randomDist}px, 0px) scale(0.5, 0.5)`,
+        `translate(${SPARK_ELEMENT_WIDTH / 2}px, 0) scale(0, 0)`
+    );
+
+    // todo some axis would be good here.
+    styleSheet.sheet.insertRule(
+        `@keyframes ${name} {
+        0% {
+        transform: ${s1};
+        }
+        70% {
+        transform: ${s2};
+        }
+        100% {
+        transform: ${s3};
+        }
+    }`,
+        styleSheet.length
+    );
+    };
+
+    document.addEventListener("click", (e) => {
+    if (e.target.tagName !== 'A' && !e.target.closest('a')) { // Check if the clicked element is not a link or inside a link
+        const center = { x: e.pageX, y: e.pageY };
+        makeBurst(center);
+    }
+    });
+
+    const makeBurst = (center) => {
+    for (let i = 0; i < 8; i++) {
+        const randomSpace = RANDOMNESS_ON
+        ? Math.floor(-17 + Math.random() * 34)
+        : 0;
+        makeSpark(center, 45 * i + randomSpace);
+    }
+    };
+
+    /**
+     * Creates a spark
+     */
+    const makeSpark = (center, rotation) => {
+    const div = document.createElement("div");
+    const aniName = `disappear_${rotation}`;
+    dynamicAnimation(aniName, rotation);
+
+    div.classList.add("spark");
+    div.style.left = `${center.x}px`;
+    div.style.top = `${center.y}px`;
+    div.style.animation = `${aniName} 500ms ease-out both`;
+    document.body.append(div);
+    setTimeout(() => {
+        document.body.removeChild(div);
+    }, 1000);
+    };
+</script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

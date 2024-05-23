@@ -1,0 +1,49 @@
+{%extends 'index.html'%}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col feedBox">
+            <h1>Databases</h1>
+            <p>A database stores applications data in an organised way. The application then issues
+                queries to retrieve specific portions of the data as they are needed.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col feedBox feedBoxSwell">
+            <h1>Model View Controller <span><button class="btn" id="toggleButton"><img src="../static/Images/plusIcon.png" alt="Expand Icon" style="width: 20px; height: 20px"></button></span></h1>
+            <p>MVC pattern is one of the most popular architectures for server side web applications.</p>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col feedBox feedBoxSwell">
+            <h1>CRUD</h1>
+            <ul>
+                <li>
+                    <p>
+                        <em>Create</em> uses insert for data
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <em>Read</em> uses select for data
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <em>Update</em> uses update for data
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <em>Delete</em> uses delete for data
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{%endblock content%}

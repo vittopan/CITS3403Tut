@@ -1,0 +1,60 @@
+{%extends 'index.html'%}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 feedBox feedBoxSwell">
+            <h1>HTML, CSS, and Bootstrap</h1>
+            <p><em>HTML: </em>Basic layout and structure of a website</p>
+            <p><em>CSS: </em>Styling a page, hardest thing is the inheritance</p>
+            <p><em>Bootstrap: </em>Follow Information on Bootstrap Docs</p>
+        </div>
+        <div class="col-md-12 feedBox feedBoxSwell">
+            <h1>Javascript Core and Client Side</h1>
+            <p>Javascript contains the core and the client side, the link
+                below contains information on both.
+            </p>
+            <button>
+                <a href="{{url_for('javascript')}}">Click Me</a>
+            </button>
+        </div>
+        <div class="col-md-12 feedBox feedBoxSwell">
+            <h1>REST APIs</h1>
+            <p>Representational State Transfers and Application programming Interface information
+                below. <em>click the link</em>
+            </p>
+            <button>
+                <a href="{{url_for('rest')}}">Click me</a>
+            </button>
+        </div>
+        <div class="col-md-12 feedBox feedBoxSwell">
+            <h1>Agile Processes</h1>
+            <p>An Agile Processes is used to describe a process used to complete a project, in which
+                the people involved use iterations to rapidly improve the code.
+            </p>
+            <button>
+                <a href="{{url_for('agileprocesses')}}">Click me</a>
+            </button>
+        </div>
+        <div class="col-md-12 feedBox feedBoxSwell">
+            <h1>Databases</h1>
+            <p>More on databases here...
+            </p>
+            <button>
+                <a href="{{url_for('databases')}}">Click me</a>
+            </button>
+        </div>
+        <div class="col-md-12 feedBox feedBoxSwell">
+            <h1>Flask</h1>
+            <p>Server Side and Client Side rendering
+            </p>
+            <button>
+                <a href="{{url_for('flaskInfo')}}">Click me</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+{%endblock content%}
