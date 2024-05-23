@@ -1,14 +1,59 @@
 {%extends 'index.html'%}
 {%block content%}
 <div class="container">
-    <div class="row">
+    <div class="row d-flex">
         <div class="col feedBox feedBoxSwell">
             <h1>Agile Processes</h1>
+            <p>Project management framework that breaks down processes into managable dynamic phases</p>
+        </div>
+    </div>
+    <div class="row d-flex align-items-stretch">
+        <div class="col-md feedBox feedBoxSwell">
+            <h1>User Stories</h1>
+            <p>A list of feature can be developed by user stories</p>
+            <ul>
+                <li>Each user story describes one desirable feature of the software</li>
+                <li>They are told from the end user point of view</li>
+                <li>They are often written on cards to facilitate communication.</li>
+            </ul>
+        </div>
+        <div class="col-md feedBox feedBoxSwell">
+            <h1>Estimation</h1>
+            <p>Used to estimate how long a project will take.</p>
+        </div>
+    </div>  
+    <div class="row d-flex">
+        <div class="col-md feedBox feedBoxSwell">
+            <h1>Planning</h1>
+            <p>Combines the user stories and estimations to build a feasible plan for delivery</p>
+        </div>
+        <div class="col-md feedBox feedBoxSwell">
+            <h1>Refactoring</h1>
+            <ul>
+                <li>To maintain design and functionality, we must be prepared to refactor code.</li>
+                <li>Organise code into manageable modules</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row d-flex">
+        <div class="col-md feedBox feedBoxSwell">
+            <h1>Test-Driven Development</h1>
+            <p>Write tests at the start and then write code to pass the tests.</p>
+            <p>The tests become the documentation of the system</p>
+        </div>
+        <div class="col-md feedBox feedBoxSwell">
+            <h1>Unit Testing</h1>
+            <p>Unit Tests are snippets of test code developers write to prove to themselves that what
+                they are developing actually works. Think of them as codified requirements.
+            </p>
         </div>
     </div>
     <div class="row">
-        <div class="col-6 feedBox feedBoxSwell">
-            <h1>Step 1</h1>
+        <div class="col-md feedBox feedBoxSwell">
+            <h1>Continuous Integration</h1>
+            <p>Continuous Integration keeps the code in repository that is automatically maintainedm and everyone works
+                on at the same time.
+            </p>
         </div>
     </div>
 </div>
