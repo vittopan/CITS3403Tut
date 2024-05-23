@@ -13,7 +13,22 @@
         <div class="col feedBox feedBoxSwell">
             <h1>Model View Controller <span><button class="btn" id="toggleButton"><img src="../static/Images/plusIcon.png" alt="Expand Icon" style="width: 20px; height: 20px"></button></span></h1>
             <p>MVC pattern is one of the most popular architectures for server side web applications.</p>
-            
+        </div>
+    </div>
+    <div class="row">
+        <div id="expandableContent" style="display: none;">
+            <div class="col-md feedBox feedBoxSwell">
+                <h1>Model</h1>
+                <p>Concerned with persistent data storage, integrity and consistency. It uses objects as entities to communicate with the database</p>
+            </div>
+            <div class="col-md feedBox feedBoxSwell">
+                <h1>View</h1>
+                <p>Uses Jinja Templates within the HTML to display</p>
+            </div>
+            <div class="col-md feedBox feedBoxSwell">
+                <h1>Controller</h1>
+                <p>Uses <em>routes.py</em>to link the models to views, prepare the models, update and save the models.</p>
+            </div>
         </div>
     </div>
     <div class="row">
