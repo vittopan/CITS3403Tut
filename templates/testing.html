@@ -1,0 +1,39 @@
+{%extends 'index.html'%}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-12 feedBox feedBoxSwell">
+            <h1>Unit Testing</h1>
+            <p>Unit testing is testing in which small parts of a large program are tested in portions (functions).</p>
+            <h2>Properties</h2>
+            <ul>
+                <li>Automated, repeatable, run quickly, pinpoint failure, limited in scope</li>
+            </ul>
+            <h2>Test Doubles</h2>
+            <ul>
+                <li>
+                    <h3>Fakes</h3>
+                    <p>Fakes are objects with working implementations, but are not the same as an environment.</p>
+                </li>
+                <li>
+                    <h3>Stubs</h3>
+                    <p>Stubs are objects that hold predefined data to respond to specific requests, but do not provide full functionality.</p>
+                </li>
+                <li>
+                    <h3>Mocks</h3>
+                    <p>Mocks are like stubs but they remember the calls they receive, so we can assert that the correct action was performed, or the correct message was sent.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 feedBox feedBoxSwell">
+            <h1>System Testing</h1>
+            <p>System testing is a level of software testing where a complete and integrated software system is tested as a whole.
+                the purpose of system testing to evaluate the system's compliance with the specified requirements.
+            </p>
+        </div>
+    </div>
+</div>
+{%endblock content%}
