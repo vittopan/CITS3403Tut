@@ -6,7 +6,7 @@ The association between a URL and the function that handles it is called
 a route.
 '''
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
 from flask_app.forms.forms import LoginForm
 from flask_bootstrap import Bootstrap
 
@@ -55,14 +55,16 @@ def testing():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()  # Create an instance of the LoginForm class
-    if form.validate_on_submit():  # If the form is submitted and valid
-        # Flash a success message
-        flash(f'Login requested for user {form.username.data}', 'success')
-        # Redirect the user to the home page
-        return redirect(url_for('home'))
-    # Render the login page template and pass the form to it
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and user.check_password(form.password.data):
+            flash('Login successful', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', form=form)
+
 if __name__ == '__main__':
     app.run(debug=True)
 
