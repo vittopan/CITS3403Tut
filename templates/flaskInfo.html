@@ -6,29 +6,7 @@ are columns, the columns contain the information. -->
 <div class="container">
     <div class="row">
         <div class="col feedBox feedBoxSwell">
-            <h1>Flask Server Side Rendering</h1>
-            <button class="btn" id="toggleButton">
-                Click Me
-            </button>
-        </div>
-    </div>
-    <div class="row">
-        <div id="expandableContent" style="display: none;">
-            <div class="col-md-12 feedBox feedBoxSwell">
-                <h1>Server Side</h1>
-                <p>The server builds the HTML when it recieves the request and sends it to the client.</p>
-                <img src="../static/Images/ServerSide.png" alt="ServerSideRendering" style="width: 300px; height: 200px;">
-            </div>
-            <div class="col-md-12 feedBox feedBoxSwell" style="height: 350px">
-                <h1>Client Side</h1>
-                <p>The server sends JS and an HTML skeleton to the client, and the client can then request JSON and build the HTML using AJAX and jQuery.</p>
-                <img src="../static/Images/ServerSide.png" alt="ClientSideRendering">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col feedBox feedBoxSwell">
-            <h1>Flask Client Side Rendering</h1>
+            <h1>Server Side and Client Side</h1>
             <button class="btn" id="toggleButton">
                 Click Me
             </button>
@@ -37,15 +15,64 @@ are columns, the columns contain the information. -->
     <div class="row">
         <div id="expandableContent" style="display: none;">
             <div class="row">
-                <div class="col-md feedBox feedBoxSwell" style="height: 350px;">
-                    <h1>Server Side</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, hic?</p>
+                <div class="col-md feedBox feedBoxSwell" style="max-height: fit-content;">
+                    <h1>Server Side (RSRR) </h1>
+                    <p>SSR involves generating the HTML content on the server and sending it to the client when it
+                        is a fully formed webpage.
+                    </p>
+                    <ol>
+                        <li><strong>Request Handling: </strong>The client makes a request to the server.</li>
+                        <li><strong>Server Processing: </strong>The server processes the request, executes any necessary logic, and generates the complete HTML.</li>
+                        <li><strong>Response: </strong>The server sends the complete HTML and displays the web page.</li>
+                        <li><strong>Rendering: </strong>The client's browser renders the received HTML and displays the web page.</li>
+                    </ol>
                 </div>
-                <div class="col-md feedBox feedBoxSwell" style="height: 350px">
-                    <h1>Client Side</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, odio!</p>
+                <div class="col-md feedBox feedBoxSwell" style="max-height: fit-content;">
+                    <h1>Client Side (RACR)</h1>
+                    <p>CSR involves generating the HTML content in the client's browser using JavaScript.
+                        This approach typically uses a REST API, AJAX, and jQuery for making HTTP requests
+                        and dynamically updating the web page.
+                    </p>
+                    <ol>
+                        <li><strong>Request: </strong>The client requests a basic HTML shell from the server.</li>
+                        <li><strong>Execution: </strong>The basic HTML includes JavaScript that runs in the browser.</li>
+                        <li><strong>Calls: </strong>JavaScript makes asynchronous API calls to the server to fetch data (using AJAX).</li>
+                        <li><strong>Rendering: </strong>The broswer processes the received data and dynamically updates the HTML to display the content.</li>
+                    </ol>
                 </div>
             </div>
+        </div>
+    </div>
+    <<div class="row">
+        <div class="col-md feedBox feedBoxSwell" style="max-height: fit-content;">
+            <h1>SSR Pros and Cons </h1>
+            <h2>Pros</h2>
+            <ul>
+                <li>SEO Friendly</li>
+                <li>Initial Load Speed</li>
+                <li>Simplicity</li>
+            </ul>
+            <h2>Cons</h2>
+            <ul>
+                <li>Server Load</li>
+                <li>Scalability</li>
+                <li>Interactivity</li>
+            </ul>
+        </div>
+        <div class="col-md feedBox feedBoxSwell" style="max-height: fit-content; overflow-y: scroll;">
+            <h1>CSR Pros and Cons</h1>
+            <h2>Pros</h2>
+            <ul>
+                <li>Interactivity</li>
+                <li>Reduced Server Load</li>
+                <li>Perfomance</li>
+            </ul>
+            <h2>Cons</h2>
+            <ul>
+                <li>Initial Load Time</li>
+                <li>SEO challenges</li>
+                <li>Complexity</li>
+            </ul>
         </div>
     </div>
 </div>

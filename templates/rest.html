@@ -2,7 +2,7 @@
 {%block content%}
 <div class="container">
     <div class="row">
-        <div class="col feedBox feedBoxSwell">
+        <div class="col-12 feedBox feedBoxSwell">
             <h1>REST</h1>
             <p>(Representational State Transfer) are Architectures for the web that describe interactions with web based
                 resources.
@@ -11,73 +11,158 @@
             <p>Application Programming interface are used so two websites can communicate
                 over the internet.
             </p>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md feedBox" style="height: 350px;">
-            <h1>1. Client Server Model</h1>
-            <p>
-                Seperates the Roles within the server, The client and the server 
-                communicate throught the HTTP Requests and TCP/IP
-            </p>
-        </div>
-        <div class="col-md feedBox" style="height: 350px;">
-            <h1>2. Layered System</h1>
-            <p>States that there doesn't need to be a direct link between
-                the client and the server rather it can use intermediate nodes
-                through proxy chaining.
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md feedBox" style="height: 350px;">
-            <h1>3. Cache</h1>
-            <p>States that the user can use local browser cache to
-                store previous HTTP requests, so the user does not need to
-                access the server every time <em>Good for efficiency</em>
-            </p>
-        </div>
-        <div class="col-md feedBox" style="height: 350px;">
-            <h1>4. Code On Demand</h1>
-            <p>
-                States that the server can provide executable code in
-                response to a request.
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md feedBox" style="height: 350px;">
-            <h1>5. Stateless</h1>
-            <p>Statelessness is a key property in HTTP, memory of prior transactions
-                should not be saved and a request must contain sufficient context to
-                receive a response.
-            </p>
-        </div>
-        <div class="col-md feedBox" style="height: 350px;">
-            <h1>6. Uniform Interface</h1>
-            <p>
-                Uniform Interface is used so that the client does not have to create a 
-                new UI everytime they want to access the server.
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md feedBox">
-            <h2>
-                How do <em>RESTful API</em> use <em>HTTP</em> verbs to map URLS to perform CRUD.
-                <span><button id="toggleButton" class="btn">Click me</button></span>
-            </h2>
-            
+            <h1>Six Principles of REST API</h1>
+            <button id="toggleButton">Click me</button>
         </div>
     </div>
     <div class="row">
         <div id="expandableContent" style="display: none;">
-            <div class="col-md feedBox feedBoxSwell">
-                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, id.</h2>
+            <div class="row">
+                <div class="col feedBox" style="height: inherit;">
+                    <h1>1. Client Server Model</h1>
+                    <p>
+                        Seperates the Roles within the server, The client and the server 
+                        communicate throught the HTTP Requests and TCP/IP
+                    </p>
+                </div>
+                <div class="col feedBox" style="height: inherit;">
+                    <h1>2. Layered System</h1>
+                    <p>States that there doesn't need to be a direct link between
+                        the client and the server rather it can use intermediate nodes
+                        through proxy chaining.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md feedBox" style="height: inherit;">
+                    <h1>3. Cache</h1>
+                    <p>States that the user can use local browser cache to
+                        store previous HTTP requests, so the user does not need to
+                        access the server every time <em>Good for efficiency</em>
+                    </p>
+                </div>
+                <div class="col-md feedBox" style="height: inherit;">
+                    <h1>4. Code On Demand</h1>
+                    <p>
+                        States that the server can provide executable code in
+                        response to a request.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md feedBox" style="height: inherit;">
+                    <h1>5. Stateless</h1>
+                    <p>Statelessness is a key property in HTTP, memory of prior transactions
+                        should not be saved and a request must contain sufficient context to
+                        receive a response.
+                    </p>
+                </div>
+                <div class="col-md feedBox" style="height: inherit;">
+                    <h1>6. Uniform Interface</h1>
+                    <p>
+                        Uniform Interface is used so that the client does not have to create a 
+                        new UI everytime they want to access the server.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 feedBox feedBoxSwell">
+            <h1>RESTful API works and CRUD actions</h1>
+            <p>The RESTful API works together with HTTP verbs to map URLS to perform the CRUD actions.</p>
+            <h4>Create(POST)</h4>
+            <ul>
+                <li><strong>Collection:</strong> Adding a new 'book' to the collection</li>
+                <li><strong>HTTP Method:</strong> `POST`</li>
+                <li><strong>Request Body:</strong></li>
+                <code>
+                    {<br>
+                        "title": "The Great Gatsby",<br>
+                        "author": "F. Scott Fitzgerald",<br>
+                        "published_date": "1925-04-10"<br>
+                    }
+                </code>
+                <li><strong>Response:</strong> The API creates a new book entry and returns the details
+                of the created book, often including a unique identifier.</li>
+                <code>
+                    {<br>
+                        "id": 1,<br>
+                        "title": "The Great Gatsby",<br>
+                        "author": "F. Scott Fitzgerald",<br>
+                        "published_date": "1925-04-10"<br>
+                    }
+                </code>
+            </ul>
+            <h4>READ (GET)</h4>
+            <ul>
+                <li><strong>Collection: </strong>Retrieving the list of all books.</li>
+                <li><strong>HTTP Method: </strong>`GET`</li>
+                <li><strong>Response: </strong></li>
+                <code>
+                    [
+                        {<br>
+                            "id": 1,<br>
+                            "title": "The Great Gatsby",<br>
+                            "author": "F. Scott Fitzgerald",<br>
+                            "published_date": "1925-04-10"<br>
+                        },
+                        {
+                            "id": 2,<br>
+                            "title": "To Kill a Mockingbird",<br>
+                            "author": "Harper Lee",<br>
+                            "published_date": "1960-07-11"<br>
+                        }
+                    ]
+                </code>
+                <li><strong>Individual Element: </strong>Retrieving details of a specific book by its ID</li>
+                <li><strong>HTTP Method</strong>`GET`</li>
+                <li><strong>Response:</strong></li>
+                <code>
+                    {<br>
+                        "id": 1,<br>
+                        "title": "The Great Gatsby",<br>
+                        "author": "F. Scott Fitzgerald",<br>
+                        "published_date": "1925-04-10"<br>
+                    }                      
+                </code>
+            </ul>
+            <h4>UPDATE(PUT/PATCH)</h4>
+            <ul>
+                <li><strong>Individual Element: </strong>Updating the details of a specific book.</li>
+                <li><strong>HTTP Method: </strong>`PUT` (or `PATCH` for partial updates)</li>
+                <li>Request Body:</li>
+                <code>
+                    {<br>
+                        "title": "The Great Gatsby",<br>
+                        "author": "F. Scott Fitzgerald",<br>
+                        "published_date": "1926-04-10"<br>
+                      }
+                </code>
+                <li><strong>Response: </strong>The API updates the specified book and returns the updated details.</li>
+                <code>
+                    {<br>
+                        "id": 1,<br>
+                        "title": "The Great Gatsby",<br>
+                        "author": "F. Scott Fitzgerald",<br>
+                        "published_date": "1926-04-10"<br>
+                      }
+                </code>
+            </ul>
+            <h4>DELETE(DELETE)</h4>
+            <ul>
+                <li><strong>Individual Eleement: </strong>Deleting a specific book by its ID.</li>
+                <li><strong>HTTP Method: </strong> `DELETE`</li>
+                <li><strong>Response: </strong>The API deletes the specified book, often returning a status message.</li>
+                <code>
+                    {
+                        "message": "Book deleted successfully"
+                      }
+                </code>
+            </ul>
+        </div>
+    </div>
+   
 </div>
 
 
