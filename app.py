@@ -7,13 +7,18 @@ a route.
 '''
 
 from flask import Flask, render_template, url_for, flash, redirect
-from flask_app.forms.forms import LoginForm
+from flask_app.forms.forms import LoginForm, createAccount
 from flask_bootstrap import Bootstrap
+from flask_app.models import db, User
 
 # Layout for the page, (View) where Jinja Template is.
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'  # Set a secret key for CSRF protection
-Bootstrap(app)
+app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
 
 @app.route('/content')
 def content():
@@ -64,6 +69,18 @@ def login():
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', form=form)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = createAccount()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created! You are now able to log in', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
