@@ -7,9 +7,13 @@ a route.
 '''
 
 from flask import Flask, render_template, url_for
+from flask_app.forms.forms import LoginForm
+from flask_bootstrap import Bootstrap
 
 # Layout for the page, (View) where Jinja Template is.
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your_secret_key'  # Set a secret key for CSRF protection
+Bootstrap(app)
 
 @app.route('/content')
 def content():
@@ -49,9 +53,16 @@ def labs():
 def testing():
     return render_template('testing.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    form = LoginForm()  # Create an instance of the LoginForm class
+    if form.validate_on_submit():  # If the form is submitted and valid
+        # Flash a success message
+        flash(f'Login requested for user {form.username.data}', 'success')
+        # Redirect the user to the home page
+        return redirect(url_for('home'))
+    # Render the login page template and pass the form to it
+    return render_template('login.html', form=form)
 if __name__ == '__main__':
     app.run(debug=True)
 
